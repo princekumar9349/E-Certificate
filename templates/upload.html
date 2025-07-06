@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Certificate - Upload Data</title>
+
+    <!-- Bootstrap & Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <!-- Corrected path for static CSS file -->
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="dashboard.html">
+                <i class="fas fa-certificate me-2"></i>E-Certificate
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-1"></i>Admin
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <!-- Corrected href for Dashboard -->
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="templates.html">
+                                <i class="fas fa-file-alt me-2"></i>Templates
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                           <!-- Corrected href for Upload Data and set as active -->
+                           <a class="nav-link active" href="upload.html">
+                          <i class="fas fa-upload me-2"></i>Upload Data
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- Corrected href for Status -->
+                            <a class="nav-link" href="status.html">
+                           <i class="fas fa-chart-bar me-2"></i>Status
+                           </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Upload Student Data</h1>
+                </div>
+
+                <!-- Upload Section -->
+                <div class="row mb-4">
+                    <div class="col-lg-6">
+                        <div class="card shadow-sm">
+                            <div class="card-header">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-cloud-upload-alt me-2"></i>Upload File
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="upload-area" id="uploadArea" data-testid="upload-area">
+                                    <div class="upload-content text-center">
+                                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                                        <h5>Drag & Drop your file here</h5>
+                                        <p class="text-muted">or click to browse</p>
+                                        <input type="file" id="fileInput" class="d-none" accept=".xlsx,.xls,.csv">
+                                        <button type="button" class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
+                                            <i class="fas fa-folder-open me-2"></i>Choose File
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-3">
+                                    <small class="text-muted">
+                                        <i class="fas fa-info-circle me-1"></i>
+                                        Supported formats: Excel (.xlsx, .xls) and CSV (.csv)
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- File Requirements Section -->
+                    <div class="col-lg-6">
+                        <div class="card shadow-sm">
+                            <div class="card-header">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-info-circle me-2"></i>File Requirements
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <h6>Required Columns:</h6>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success me-2"></i>Student Name</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Email Address</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Course/Program</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Completion Date</li>
+                                </ul>
+                                
+                                <h6 class="mt-3">Sample Format:</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-bordered">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Course</th>
+                                                <th>Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Sumit Kourav</td>
+                                                <td>sumitkourav77@gmail.com</td>
+                                                <td>Web Development</td>
+                                                <td>15june 2025</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Prince kumar</td>
+                                                <td>princekumar77@gmail.com</td>
+                                                <td>Backend Development</td>
+                                                <td>01june 2025</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Priyanshi Mandlio</td>
+                                                <td>priyanshi77@gmail.com</td>
+                                                <td>Designner</td>
+                                                <td>02july 2025</td>
+                                            </tr>
+                                            <tr>
+                                                <td>tanuj </td>
+                                                <td>tanuj77@gmail.com</td>
+                                                <td>worker</td>
+                                                <td>15june 2025</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-download me-2"></i>Download Sample
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Preview Section -->
+                <div class="card shadow-sm" id="previewSection" style="display: none;">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">
+                            <i class="fas fa-table me-2"></i>Data Preview
+                        </h5>
+                        <div>
+                            <span class="badge bg-info" id="recordCount">0 records</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="previewTable">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Student Name</th>
+                                        <th>Email Address</th>
+                                        <th>Course/Program</th>
+                                        <th>Completion Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="previewTableBody">
+                                    <!-- Data will be loaded here by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div>
+                                <button type="button" class="btn btn-outline-secondary" onclick="clearData()" data-testid="clear-btn">
+                                    <i class="fas fa-trash me-2"></i>Clear Data
+                                </button>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-success btn-lg" onclick="sendCertificates()" id="sendBtn" data-testid="send-btn">
+                                    <i class="fas fa-paper-plane me-2"></i>Send Certificates
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sending Progress Section -->
+                <div class="card shadow-sm mt-4" id="progressSection" style="display: none;">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-spinner fa-spin me-2"></i>Sending Certificates
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="progress mb-3">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                 role="progressbar" 
+                                 style="width: 0%" 
+                                 id="progressBar">0%</div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col-md-4">
+                                <h6>Total</h6>
+                                <span class="badge bg-primary" id="totalCount">0</span>
+                            </div>
+                            <div class="col-md-4">
+                                <h6>Sent</h6>
+                                <span class="badge bg-success" id="sentCount">0</span>
+                            </div>
+                            <div class="col-md-4">
+                                <h6>Failed</h6>
+                            </div>
+                            <div class="col-12 mt-2">
+                                <small id="lastError" class="text-danger" style="display:none;"></small>
+                                <span class="badge bg-danger" id="failedCount">0</span>
+                            </div>
+                            <div class="col-12 mt-2">
+                                <small id="lastError" class="text-danger" style="display:none;"></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Debug Console -->
+    <div id="debugConsole" style="position:fixed;bottom:0;right:0;width:300px;height:150px;background:#333;color:#fff;overflow:auto;z-index:1000;display:none;">
+        <div style="padding:10px;font-family:monospace;font-size:12px;"></div>
+        <button onclick="document.getElementById('debugConsole').style.display='none'" style="position:absolute;top:0;right:0;background:red;border:none;color:white">X</button>
+    </div>
+    
+    <!-- Corrected path for custom JavaScript file -->
+    <script src="/static/js/script.js"></script>
+    
+    <script>
+        function logToConsole(message) {
+            const consoleEl = document.getElementById('debugConsole');
+            const contentEl = consoleEl.querySelector('div');
+            contentEl.innerHTML += message + '<br>';
+            consoleEl.scrollTop = contentEl.scrollHeight;
+            console.log(message);
+        }
+        
+        // Show debug console on shift+D
+        document.addEventListener('keydown', (e) => {
+            if (e.shiftKey && e.key === 'D') {
+                document.getElementById('debugConsole').style.display = 'block';
+                logToConsole('Debug console activated');
+            }
+        });
+    </script>
+
+</body>
+</html>
