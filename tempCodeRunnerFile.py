@@ -10,15 +10,15 @@ from reportlab.lib.utils import ImageReader
 
 app = Flask(__name__)
 
-#  Flask-Mail Configuration 
+# ----------------- Flask-Mail Configuration -----------------
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'princebist40@gmail.com'
-app.config['MAIL_PASSWORD'] = 'vabz chzy ckit xqhp' 
+app.config['MAIL_PASSWORD'] = 'vabz chzy ckit xqhp'  # App password from Gmail
 mail = Mail(app)
 
-#\ File Upload Setup 
+# ----------------- File Upload Setup -----------------
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -27,13 +27,13 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 selected_template_name = "default"
 certificate_status_log = []  # Stores status for /status.html
 
-#  Certificate Generator
+# ----------------- Certificate Generator -----------------
 def generate_certificate(name, course, date, template_name):
     buffer = BytesIO()
     c = canvas.Canvas(buffer, pagesize=letter)
     width, height = letter 
 
-    # --- Background Image (Fixed for all templates)
+    # --- Background Image (Fixed for all templates) ---
     try:
         bg_path = "static/certificate_backgrounds/certificate_bg.png"
         background = ImageReader(bg_path)
